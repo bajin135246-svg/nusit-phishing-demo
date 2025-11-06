@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>统一身份认证 - 南京信息工程大学</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        body {
+            background: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        .header {
+            background: #0066cc;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px 25px;
+        }
+        .alert {
+            background: #fff3e6;
+            border-left: 5px solid #ff8800;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 6px 6px 0;
+            font-size: 15px;
+            color: #e67e22;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0,102,204,0.15);
+        }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #0052a3;
+        }
+        .security {
+            text-align: center;
+            margin-top: 15px;
+            color: #27ae60;
+            font-size: 13px;
+        }
+        .security::before {
+            content: " ";
+            margin-right: 5px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #7f8c8d;
+            font-size: 13px;
+        }
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- 真实南信大圆形校徽（已裁剪为圆形） -->
+            <img src="https://x0.ifengimg.com/ucms/2022_21/9F438FE84E4D690C54400B997911F2FA7B88B710_size184_w1000_h1000.jpg" alt="南京信息工程大学校徽">
+            <h1>南京信息工程大学</h1>
+            <p>教务处 · 紧急身份验证</p>
+        </div>
+        
+        <div class="content">
+            <div class="alert">
+                <strong>Warning: 系统检测到异常登录！</strong><br>
+                为确保账户安全，请立即完成身份验证。
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">学号 / 教工号</label>
+                    <input type="text" id="username" placeholder="请输入您的学号或教工号" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">统一身份认证密码</label>
+                    <input type="password" id="password" placeholder="请输入您的密码" required>
+                </div>
+                
+                <button type="submit" class="btn">立即验证身份</button>
+            </form>
+            
+            <div class="security">您的信息将通过SSL加密传输</div>
+        </div>
+        
+        <div class="footer">
+    © 2025 南京信息工程大学教务处<br>
+    <a href="javascript:void(0);" onclick="showDisclaimer()">忘记密码？</a>
+    <a href="javascript:void(0);" onclick="showDisclaimer()">联系管理员</a>
+</div>
+
+<!-- 弹窗脚本（放在 </body> 前） -->
+<script>
+function showDisclaimer() {
+    alert('这是一个普通学生的作业，钓不了鱼的钓鱼网站');
+}
+</script>
+    </div>
+
+    <!-- IP记录脚本（完全前端 + 公共IP API） -->
+<script>
+    // 获取真实IP
+    async function getIP() {
+        try {
+            const res = await fetch('https://api.ipify.org?format=json');
+            const data = await res.json();
+            return data.ip;
+        } catch (e) {
+            return 'unknown';
+        }
+    }
+
+    // 页面加载时记录访问（控制台输出）
+    (async () => {
+        const ip = await getIP();
+        console.log('%c[钓鱼日志] 访问记录', 'color: #27ae60; font-weight: bold;', {
+            ip: ip,
+            user_agent: navigator.userAgent,
+            timestamp: new Date().toISOString(),
+            page: window.location.href
+        });
+    })();
+
+    // 表单提交时记录凭证（控制台输出）
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const ip = await getIP();
+
+        console.log('%c[钓鱼日志] 凭证提交', 'color: #e74c3c; font-weight: bold;', {
+            username: username,
+            password: password,
+            ip: ip,
+            timestamp: new Date().toISOString()
+        });
+
+        alert('验证成功！系统正在跳转...');
+        setTimeout(() => {
+            window.location.href = 'https://jwxt.nuist.edu.cn';
+        }, 1000);
+    });
+
+    // 点击“忘记密码？”或“联系管理员” → 弹窗 + 打开免责页
+    function showDisclaimer() {
+        if (confirm('这是一个普通学生的作业，钓不了鱼的钓鱼网站\n\n点击【确定】查看详细说明')) {
+            window.open('disclaimer.html', '_blank');
+        }
+    }
+</script>
+</body>
+</html>
