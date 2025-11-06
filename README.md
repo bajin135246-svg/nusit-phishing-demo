@@ -3,7 +3,7 @@
 > 仅为教学演示，禁止非法使用
 
 ## 在线演示
-https://bajin135246-svg.github.io/nuist-phishing-demo
+https://bajin135246-svg.github.io/nusit-phishing-demo/
 
 ## 功能
 - 仿真南信大教务处登录页
