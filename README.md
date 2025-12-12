@@ -14,11 +14,11 @@ https://bajin135246-svg.github.io/nusit-phishing-demo/
 ## 免责声明
 **这是一个普通学生的作业，钓不了鱼的钓鱼网站**
 
-Phishing Website Demo Project (Educational Purpose Only)
-Purely a teaching demonstration, strictly prohibited for any illegal use
-Online Demo
+# Phishing Website Demo Project (Educational Purpose Only)
+> Purely a teaching demonstration, strictly prohibited for any illegal use
+## Online Demo
 https://bajin135246-svg.github.io/nusit-phishing-demo/
-Features
+## Features
 
 High-fidelity imitation of Nanjing University of Information Science & Technology (NUIST) Academic Affairs Office login page
 Captures and logs visitor IP address, student ID/username, and password (saved to local log file)
@@ -26,7 +26,7 @@ Clicking “Forgot Password?” or “Contact Admin” pops up a clear disclaime
 After submission, automatically redirects to the official NUIST teaching affairs system
 Fully responsive design, works perfectly on both PC and mobile devices
 
-Disclaimer
+## Disclaimer
 This is merely a regular student’s coursework project — a “phishing site that cannot actually phish”.
 It is created solely for the Network Security course to demonstrate phishing attack principles.
 No real personal information is collected or transmitted to any third party; all data is recorded only locally on the server for demonstration purposes.
